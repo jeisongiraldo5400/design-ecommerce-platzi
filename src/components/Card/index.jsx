@@ -1,4 +1,10 @@
-export const Card = () => {
+import PropTypes from 'prop-types';  
+
+export const Card = ({ data }) => {
+
+  const { category, price, title, images } = data;
+  const { name } = category;
+  
   return (
     <div className="bg-white cursor-pointer w-56 h-60 rounded-lg">
       <figure className="relative mb-2 w-full h-4/5">
@@ -8,14 +14,14 @@ export const Card = () => {
           m-2 px-3 py-0.5
         "
         >
-          Electronics
+          {name}
         </span>
         <img
           className="
           w-full 
           h-full object-cover rounded-lg"
-          src="https://cdn.shopify.com/s/files/1/0573/2309/4216/products/Miami_RubyRed_001_1200x1200.png?v=1656925796"
-          alt="headphones"
+          src={images[0]}
+          alt={title}
         />
         <div
           className="absolute 
@@ -29,9 +35,13 @@ export const Card = () => {
         </div>
       </figure>
       <p className="flex justify-between">
-        <span className="text-sm font-light">Headphones</span>
-        <span className="text-lg font-semibold">$300</span>
+        <span className="text-sm font-light">{title}</span>
+        <span className="text-lg font-semibold">{price}</span>
       </p>
     </div>
   );
 };
+
+Card.propTypes = {
+  data: PropTypes.object.isRequired
+}
