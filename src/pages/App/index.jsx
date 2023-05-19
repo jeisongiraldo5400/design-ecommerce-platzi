@@ -8,6 +8,9 @@ import { NotFound } from "../NotFound";
 import { SignIn } from "../SignIn";
 import { Navbar } from "../../components/Navbar";
 
+// Provider
+import { ShopingCardProvider } from "../../Context";
+
 // Routes
 const AppRoutes = () => {
   let routes = useRoutes([
@@ -37,14 +40,15 @@ const AppRoutes = () => {
     },
   ]);
   return routes;
-}
+};
 
 export const App = () => {
-
   return (
-    <BrowserRouter>
-      <AppRoutes />
-      <Navbar />
-    </BrowserRouter>
+    <ShopingCardProvider>
+      <BrowserRouter>
+        <AppRoutes />
+        <Navbar />
+      </BrowserRouter>
+    </ShopingCardProvider>
   );
 };
