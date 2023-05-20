@@ -14,11 +14,17 @@ export const Card = ({ data }) => {
 
   const { category, price, title, images } = data;
   const { name } = category;
+
+  const showProduct = (productDetail) => {
+    context.openProductDetail();
+    context.setProductoToShow(productDetail);
+    console.log('product');
+  }
   
   return (
     <div 
       className="bg-white cursor-pointer w-56 h-60 rounded-lg"
-      onClick={() => context.openProductDetail()}
+      onClick={() => showProduct(data)}
     >
       <figure className="relative mb-2 w-full h-4/5">
         <span
